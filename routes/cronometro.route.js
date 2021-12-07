@@ -6,6 +6,7 @@ console.log("cargo")
 function transformarFechas(req, res, next) {
   if (req.body?.inicio) {
     let iniD = new Date(req.body.inicio)
+    let inicio = {}
     inicio["inicio_dia"] = iniD.getUTCDate()
     inicio["inicio_mes"] = iniD.getUTCMonth()
     inicio["inicio_anio"] = iniD.getUTCFullYear()
@@ -14,6 +15,7 @@ function transformarFechas(req, res, next) {
 
   if (req.body?.fin) {
     let finD = new Date(req.body.fin)
+    let fin = {}
     fin["fin_dia"] = finD.getUTCDate()
     fin["fin_mes"] = finD.getUTCMonth()
     fin["fin_anio"] = finD.getUTCFullYear()
@@ -26,13 +28,13 @@ function transformarFechas(req, res, next) {
 app.post("/", transformarFechas, (req, res, next) => {
   new Cronometro(req.body)
     .save()
-    .then(c => res.send(c))
+    .then(periodo => res.send({ periodo }))
     .catch(_ => next(_))
 })
 
 app.put("/", transformarFechas, (req, res, next) => {
   Cronometro.findByIdAndUpdate(req.body._id, req.body)
-    .then(c => res.send(c))
+    .then(periodo => res.send({ periodo }))
     .catch(_ => next(_))
 })
 
@@ -42,7 +44,7 @@ app.get("/", (req, res, next) => {
   Cronometro.find()
     .limit(limit)
     .skip(skip)
-    .then(cronometros => res.send({ cronometros }))
+    .then(periodos => res.send({ periodos }))
     .catch(_ => next(_))
 })
 
