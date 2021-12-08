@@ -48,6 +48,12 @@ app.get("/", (req, res, next) => {
     .catch(_ => next(_))
 })
 
+app.get("/ultimo_registro_pendiente", (req, res, next) => {
+  Cronometro.findOne().sort('-created_at')
+    .then(periodo => res.send({ periodo }))
+    .catch(_ => next(_))
+})
+
 app.delete("/:id", (req, res, next) => {
   Cronometro.findOneAndDelete(req.query.params)
     .then(() => res.send(200))
