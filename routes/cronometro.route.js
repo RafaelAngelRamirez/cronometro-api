@@ -49,8 +49,17 @@ app.get("/", (req, res, next) => {
 })
 
 app.get("/ultimo_registro_pendiente", (req, res, next) => {
-  Cronometro.findOne().sort('-created_at')
-    .then(periodo => res.send({ periodo }))
+  Cronometro.findOne()
+    .sort( '-createdAt')
+    .then(periodo => {
+      res.send({ periodo })
+    })
+    .catch(_ => next(_))
+})
+
+app.delete("/all", (req, res, next) => {
+  Cronometro.findOneAndDelete({})
+    .then(() => res.send(200))
     .catch(_ => next(_))
 })
 
