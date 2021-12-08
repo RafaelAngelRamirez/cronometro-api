@@ -58,8 +58,8 @@ app.get("/ultimo_registro_pendiente", (req, res, next) => {
 })
 
 app.delete("/all", (req, res, next) => {
-  Cronometro.findOneAndDelete({})
-    .then(() => res.send(200))
+  Cronometro.deleteMany({})
+    .then(() => res.sendStatus(200))
     .catch(_ => next(_))
 })
 
