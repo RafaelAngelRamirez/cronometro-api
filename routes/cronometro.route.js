@@ -59,6 +59,39 @@ app.get("/ultimo_registro_pendiente", (req, res, next) => {
     .catch(_ => next(_))
 })
 
+app.get("/clientes", (req, res, next) => {
+  Cronometro.aggregate([
+    { $match: { cliente: { $exists: true } } },
+    { $group: { _id: "$cliente" } },
+  ])
+    .then(clientes => {
+      res.send({ clientes: clientes.map(x => x._id) })
+    })
+    .catch(_ => next(_))
+})
+
+app.get("/proyectos", (req, res, next) => {
+   Cronometro.aggregate([
+     { $match: { proyecto: { $exists: true } } },
+     { $group: { _id: "$proyecto" } },
+   ])
+     .then(proyectos => {
+       res.send({ proyectos: proyectos.map(x => x._id) })
+     })
+     .catch(_ => next(_))
+})
+
+app.get("/estatus", (req, res, next) => {
+   Cronometro.aggregate([
+     { $match: { estatus: { $exists: true } } },
+     { $group: { _id: "$estatus" } },
+   ])
+     .then(estatus => {
+       res.send({ estatus: estatus.map(x => x._id) })
+     })
+     .catch(_ => next(_))
+})
+
 app.delete("/all", (req, res, next) => {
   Cronometro.deleteMany({})
     .then(() => res.sendStatus(200))
