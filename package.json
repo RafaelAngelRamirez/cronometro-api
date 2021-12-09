@@ -17,5 +17,10 @@
     "express": "^4.17.1",
     "mongoose": "^6.0.14",
     "nodemon": "^2.0.15"
-  }
+  },
+  "engines": {
+    "node": "16.x.x",
+    "npm": "8.x.x"
+  },
+  "private": false
 }
