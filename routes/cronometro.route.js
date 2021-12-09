@@ -39,18 +39,20 @@ app.put("/", transformarFechas, (req, res, next) => {
 })
 
 app.get("/", (req, res, next) => {
-  let limit = req.body.limit | 500
-  let skip = req.body.skip | 0
+  let limit = req.body.limit || 500
+  let skip = req.body.skip || 0
+  console.log("entro")
   Cronometro.find()
     .limit(limit)
     .skip(skip)
+    .sort("-createdAt")
     .then(periodos => res.send({ periodos }))
     .catch(_ => next(_))
 })
 
 app.get("/ultimo_registro_pendiente", (req, res, next) => {
   Cronometro.findOne()
-    .sort( '-createdAt')
+    .sort("-createdAt")
     .then(periodo => {
       res.send({ periodo })
     })
