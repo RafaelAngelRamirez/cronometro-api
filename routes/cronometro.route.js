@@ -39,8 +39,8 @@ app.put("/", transformarFechas, (req, res, next) => {
 })
 
 app.get("/", (req, res, next) => {
-  let limit = req.body.limit || 500
-  let skip = req.body.skip || 0
+  let limit = req.query.limit*1 || 500
+  let skip = req.query.skip*1 || 0
   console.log("entro")
   Cronometro.find()
     .limit(limit)
