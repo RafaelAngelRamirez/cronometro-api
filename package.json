@@ -1,12 +1,13 @@
 {
   "name": "cronometro-api",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Manejo de tiempos",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "start-local": "nodemon app.js"
+    "start-local": "nodemon app.js",
+    "release": "standard-version"
   },
   "author": "Rafael Ramirez",
   "license": "ISC",
@@ -22,5 +23,21 @@
     "node": "16.x.x",
     "npm": "8.x.x"
   },
-  "private": false
+  "private": false,
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "husky": "^7.0.4",
+    "standard-version": "^9.3.2"
+  }
 }
