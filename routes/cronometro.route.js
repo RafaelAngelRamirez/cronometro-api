@@ -41,7 +41,11 @@ app.put("/", transformarFechas, (req, res, next) => {
 app.get("/", (req, res, next) => {
   let limit = (req.query.limit || 500) * 1
   let skip = (req.query.skip || 0) * 1
-  Cronometro.find()
+
+  delete req.query.limit
+  delete req.query.skip
+
+  Cronometro.find(req.query)
     .limit(limit)
     .skip(skip)
     .sort("-createdAt")
