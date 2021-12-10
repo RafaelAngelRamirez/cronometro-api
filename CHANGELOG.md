@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/RafaelAngelRamirez/cronometro-api/compare/v0.0.2...v0.0.3) (2021-12-10)
+
+
+### Bug Fixes
+
+* Filtros se aplican a busqueda ([68d01d2](https://github.com/RafaelAngelRamirez/cronometro-api/commit/68d01d29681c84ed3363f7f97cc241ca49084362))
+
 ### [0.0.2](https://github.com/RafaelAngelRamirez/cronometro-api/compare/v0.0.1...v0.0.2) (2021-12-10)
 
 

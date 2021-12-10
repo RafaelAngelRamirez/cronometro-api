@@ -1,6 +1,6 @@
 {
   "name": "cronometro-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Manejo de tiempos",
   "main": "app.js",
   "scripts": {
