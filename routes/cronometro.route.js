@@ -39,9 +39,8 @@ app.put("/", transformarFechas, (req, res, next) => {
 })
 
 app.get("/", (req, res, next) => {
-  let limit = req.query.limit*1 || 500
-  let skip = req.query.skip*1 || 0
-  console.log("entro")
+  let limit = (req.query.limit || 500) * 1
+  let skip = (req.query.skip || 0) * 1
   Cronometro.find()
     .limit(limit)
     .skip(skip)
@@ -71,25 +70,25 @@ app.get("/clientes", (req, res, next) => {
 })
 
 app.get("/proyectos", (req, res, next) => {
-   Cronometro.aggregate([
-     { $match: { proyecto: { $exists: true } } },
-     { $group: { _id: "$proyecto" } },
-   ])
-     .then(proyectos => {
-       res.send({ proyectos: proyectos.map(x => x._id) })
-     })
-     .catch(_ => next(_))
+  Cronometro.aggregate([
+    { $match: { proyecto: { $exists: true } } },
+    { $group: { _id: "$proyecto" } },
+  ])
+    .then(proyectos => {
+      res.send({ proyectos: proyectos.map(x => x._id) })
+    })
+    .catch(_ => next(_))
 })
 
 app.get("/estatus", (req, res, next) => {
-   Cronometro.aggregate([
-     { $match: { estatus: { $exists: true } } },
-     { $group: { _id: "$estatus" } },
-   ])
-     .then(estatus => {
-       res.send({ estatus: estatus.map(x => x._id) })
-     })
-     .catch(_ => next(_))
+  Cronometro.aggregate([
+    { $match: { estatus: { $exists: true } } },
+    { $group: { _id: "$estatus" } },
+  ])
+    .then(estatus => {
+      res.send({ estatus: estatus.map(x => x._id) })
+    })
+    .catch(_ => next(_))
 })
 
 app.delete("/all", (req, res, next) => {
