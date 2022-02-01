@@ -117,7 +117,7 @@ app.get("/estatus", (req, res, next) =>
 
 app.delete("/:id", (req, res, next) =>
 {
-  Cronometro.findOneAndDelete(req.params.id)
+  Cronometro.findOneAndDelete({_id:req.params.id})
     .then(() => res.send({}))
     .catch(_ => next(_))
 })
