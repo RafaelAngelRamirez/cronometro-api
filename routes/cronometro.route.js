@@ -95,15 +95,15 @@ app.get("/estatus", (req, res, next) => {
     .catch(_ => next(_))
 })
 
-app.delete("/all", (req, res, next) => {
-  Cronometro.deleteMany({})
-    .then(() => res.sendStatus(200))
-    .catch(_ => next(_))
-})
+// app.delete("/all", (req, res, next) => {
+//   Cronometro.deleteMany({})
+//     .then(() => res.sendStatus(200))
+//     .catch(_ => next(_))
+// })
 
 app.delete("/:id", (req, res, next) => {
   Cronometro.findOneAndDelete(req.query.params)
-    .then(() => res.send(200))
+    .then(() => res.send({}))
     .catch(_ => next(_))
 })
 
