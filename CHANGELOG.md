@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/RafaelAngelRamirez/cronometro-api/compare/v0.0.3...v0.0.4) (2022-02-01)
+
+
+### Bug Fixes
+
+* No se puede eliminar registro de periodo ([5efbd2b](https://github.com/RafaelAngelRamirez/cronometro-api/commit/5efbd2b0baf0baa60e5319f62115cafae6322526))
+
 ### [0.0.3](https://github.com/RafaelAngelRamirez/cronometro-api/compare/v0.0.2...v0.0.3) (2021-12-10)
 
 
